@@ -23,11 +23,7 @@
                 <div class="card-body">
                     <div class="text-center m-b-15">
                         <a href="javascript:;" class="logo logo-admin"
-                            ><img
-                                src="{{ asset('admin/mannatthemes.com/zoogler/horizontal') }}/assets/images/logo.png"
-                                height="24"
-                                alt="logo"
-                        /></a>
+                            ><h3 class="text-black fs-30 mb-0">{{ config('app.name') }}</h3></a>
                     </div>
                     <div class="p-3">
                         <form
@@ -88,10 +84,10 @@
                             <div class="form-group m-t-10 mb-0 row">
                                 <div class="col-sm-7 m-t-20">
                                     <a
-                                        href="javascript:;"
+                                        href="{{ route('home.index') }}"
                                         class="text-muted"
-                                        ><i class="mdi mdi-lock"></i>
-                                        <small>Lupa password?</small></a
+                                        ><i class="mdi mdi-unlock"></i>
+                                        <small>Kembali</small></a
                                     >
                                 </div>
                                 <div class="col-sm-5 m-t-20">

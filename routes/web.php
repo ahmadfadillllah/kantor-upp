@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DaftarSuratController;
 use App\Http\Controllers\DashboardController;
@@ -24,11 +25,17 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/contact', [HomeController::class, 'kontak'])->name('kontak.index');
+Route::post('/contact/post', [HomeController::class, 'kontak_post'])->name('kontak.post');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login/post', [AuthController::class, 'login_post'])->name('login.post');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/app/dashboard', [AppController::class, 'index'])->name('app.index');
+Route::get('/app/buat_surat', [AppController::class, 'buat_surat'])->name('app.buat_surat');
+Route::get('/app/progress+layanan', [AppController::class, 'layanan'])->name('app.layanan');
 
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 

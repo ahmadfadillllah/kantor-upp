@@ -4,6 +4,7 @@
 <div class="wrapper">
     <div class="container-fluid">
         <!-- Page-Title -->
+        @include('admin.notif.index')
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
@@ -53,28 +54,31 @@
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="form-group row">
-                            <label
-                                for="example-text-input-lg"
-                                class="col-sm-12 col-form-label"
-                                >Email</label
-                            >
-                            <div class="col-sm-12">
-                                <input
-                                    class="form-control form-control-lg"
-                                    type="email"
-                                    placeholder="Masukkan Email"
-                                    id="example-text-input-lg"
-                                    name="email"
-                                    required
-                                />
+                        <form action="{{route('app.layanan_show')}}" method="post">
+                            @csrf
+                            <div class="form-group row">
+                                <label
+                                    for="example-text-input-lg"
+                                    class="col-sm-12 col-form-label"
+                                    >Email</label
+                                >
+                                <div class="col-sm-12">
+                                    <input
+                                        class="form-control form-control-lg"
+                                        type="email"
+                                        placeholder="Masukkan Email"
+                                        id="example-text-input-lg"
+                                        name="email"
+                                        required
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-12">
-                                <button type="submit" class="btn btn-info waves-effect waves-light"> <i class="mdi mdi-send mr-2"></i>Submit</button>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light"> <i class="mdi mdi-send mr-2"></i>Submit</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

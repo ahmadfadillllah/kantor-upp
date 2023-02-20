@@ -17,7 +17,7 @@
                     <div class="form-group row">
                         <label for="example-text-input" class="col-sm-12 col-form-label">Upload File</label>
                         <div class="col-sm-12">
-                            <input class="form-control" type="file" id="example-text-input" name="file"/>
+                            <input class="form-control" type="file" id="example-text-input" name="file" required/>
                         </div>
                     </div>
                 </div>

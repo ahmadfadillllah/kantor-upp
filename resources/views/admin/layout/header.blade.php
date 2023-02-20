@@ -193,7 +193,12 @@
                         </a>
                     </li>
                     <li class="has-submenu">
-                        <a href="{{ route('daftarsurat.index') }}">
+                        <a href="{{ route('suratkeluar.index') }}">
+                            <i class="dripicons-blog"></i>Surat Keluar
+                        </a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="{{ route('daftarkontak.index') }}">
                             <i class="dripicons-jewel"></i>Kontak
                         </a>
                     </li>

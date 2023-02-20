@@ -4,6 +4,7 @@
 <div class="wrapper">
     <div class="container-fluid">
         <!-- Page-Title -->
+        @include('admin.notif.index')
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">

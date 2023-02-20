@@ -19,7 +19,7 @@ class DaftarSuratController extends Controller
             'file' => 'required','mimes:docx,doc,rtf',
         ]);
 
-        $date = date('Ymd His gis');
+        $date = date('YmdHisgis');
 
         try {
             $surat = new DaftarSurat;

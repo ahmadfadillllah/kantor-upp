@@ -6,30 +6,39 @@ use App\Models\RequestSurat;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
-class ValidasiSuratController extends Controller
+class SuratKeluarController extends Controller
 {
+    //
     public function index()
     {
-        $surat = RequestSurat::with('daftar_surat')->where('status', 'Proses')->get();
-        return view('admin.validasi_surat.index', compact('surat'));
+        $surat = RequestSurat::where('status', 'Selesai')->get();
+        return view('admin.surat_keluar.index', compact('surat'));
     }
 
-    public function post(Request $request, $id)
+    public function revisi(Request $request, $id)
     {
-        try {
-            $date = date('YmdHisgis');
-            $surat = RequestSurat::find($id);
-            $user = RequestSurat::where('id', $id)->first();
+        $date = date('YmdHisgis');
 
+        $user = RequestSurat::where('id', $id)->first();
+
+        $surat = RequestSurat::find($id);
+        $surat->status = 'Selesai';
+        $surat->keterangan = $request->keterangan;
+        if($request->hasFile('surat')){
+            $request->file('surat')->move('admin/mannatthemes.com/zoogler/horizontal/assets/images/users/', $date.$request->file('surat')->getClientOriginalName());
+            $surat->surat = $date.$request->file('surat')->getClientOriginalName();
+        }
+        $surat->save();
+
+        try {
             (new MailMessage)
                 ->greeting('Halo '. $user->nama .'!')
-                ->line('Request surat telah dipublish!')
-                ->line('Silahkan mendownload di halaman web!');
+                ->line('Request surat telah direvisi!')
+                ->line('Silahkan mendownload ulang di halaman web!');
 
                 $accesskey= '8b77591fe1ae830044d4cd1f96923d84';
-                $phone = $user->no_hp; //atau bisa menggunakan 62812xxxxxxx
-                $message = 'Halo '. $user->nama .'!.. Request surat telah dipublish, Silahkan mendownload di halaman web!';
+                $phone = $request->no_hp; //atau bisa menggunakan 62812xxxxxxx
+                $message = 'Halo '. $user->nama .'!.. Request surat telah direvisi, Silahkan mendownload ulang di halaman web!';
 
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
@@ -48,7 +57,7 @@ class ValidasiSuratController extends Controller
 
                 $token = "cakLiM7crm7EQTAzPf9UKbn8f5APTkk7Ro429f3egCkUvDjPwS";
                 $phone= $request->no_hp;; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
-                $message = 'Halo '. $request->nama .'!.. Request surat telah dipublish, Silahkan mendownload di halaman web!';
+                $message = 'Halo '. $request->nama .'!.. Request surat telah direvisi, Silahkan mendownload ulang di halaman web!';
 
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
@@ -65,28 +74,10 @@ class ValidasiSuratController extends Controller
                 $response = curl_exec($curl);
                 curl_close($curl);
 
-                $surat->status = 'Selesai';
-                $surat->keterangan = $request->keterangan;
-                if($request->hasFile('surat')){
-                    $request->file('surat')->move('admin/mannatthemes.com/zoogler/horizontal/assets/images/users/', $date.$request->file('surat')->getClientOriginalName());
-                    $surat->surat = $date.$request->file('surat')->getClientOriginalName();
-                }
-                $surat->save();
-
-            return redirect()->back()->with('success', 'Berhasil mengirim ke request');
+            return redirect()->back()->with('success', 'Berhasil merevisi surat');
         } catch (\Throwable $th) {
             return redirect()->back()->with('success', $th->getMessage());
         }
     }
 
-    public function destroy($id)
-    {
-        try {
-            RequestSurat::where('id', $id)->delete();
-
-            return redirect()->back()->with('success', 'Request surat telah dihapus');
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('info', $th->getMessage());
-        }
-    }
 }

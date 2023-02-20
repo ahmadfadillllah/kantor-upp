@@ -52,14 +52,14 @@
                                 <div class="icon-contain">
                                     <div class="row">
                                         <div class="col-2 align-self-center">
-                                            <i class="fas fa-tasks text-gradient-success"></i>
+                                            <i class="fas fa-users text-gradient-warning"></i>
                                         </div>
                                         <div class="col-10 text-right">
                                             <h5 class="mt-0 mb-1">
-                                                190
+                                                {{$user->count()}}
                                             </h5>
                                             <p class="mb-0 font-12 text-muted">
-                                                Active Tasks
+                                                User
                                             </p>
                                         </div>
                                     </div>
@@ -77,10 +77,10 @@
                                         </div>
                                         <div class="col-10 text-right">
                                             <h5 class="mt-0 mb-1">
-                                                62
+                                                {{ $kontak->count() }}
                                             </h5>
                                             <p class="mb-0 font-12 text-muted">
-                                                Project
+                                                Kontak
                                             </p>
                                         </div>
                                     </div>
@@ -94,14 +94,14 @@
                                 <div class="icon-contain">
                                     <div class="row">
                                         <div class="col-2 align-self-center">
-                                            <i class="fas fa-users text-gradient-warning"></i>
+                                            <i class="fas fa-tasks text-gradient-success"></i>
                                         </div>
                                         <div class="col-10 text-right">
                                             <h5 class="mt-0 mb-1">
-                                                14
+                                                {{$surat_masuk->count()}}
                                             </h5>
                                             <p class="mb-0 font-12 text-muted">
-                                                Teams
+                                                Surat Masuk
                                             </p>
                                         </div>
                                     </div>
@@ -115,14 +115,14 @@
                                 <div class="icon-contain">
                                     <div class="row">
                                         <div class="col-2 align-self-center">
-                                            <i class="fas fa-database text-gradient-primary"></i>
+                                            <i class="fas fa-tasks text-gradient-success"></i>
                                         </div>
                                         <div class="col-10 text-right">
                                             <h5 class="mt-0 mb-1">
-                                                $15562
+                                                {{$surat_keluar->count()}}
                                             </h5>
                                             <p class="mb-0 font-12 text-muted">
-                                                Budget
+                                                Surat Keluar
                                             </p>
                                         </div>
                                     </div>
@@ -136,43 +136,32 @@
                         <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                             <label class="btn btn-primary btn-sm active"><input type="radio" name="options"
                                     id="option1" checked="" />
-                                This Week</label>
-                            <label class="btn btn-primary btn-sm"><input type="radio" name="options" id="option2" />
-                                Last Month</label>
+                                Bulanan</label>
                         </div>
                         <h5 class="header-title mb-4 mt-0">
-                            Weekly Record
+                            Record Surat
                         </h5>
-                        <canvas id="lineChart" height="80"></canvas>
+                        <canvas id="lineChart1" height="80"></canvas>
                     </div>
                 </div>
+
             </div>
             <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="dropdown d-inline-block float-right">
-                            <a class="nav-link dropdown-toggle arrow-none" id="dLabel4" data-toggle="dropdown"
-                                href="#" role="button" aria-haspopup="false" aria-expanded="false"><i
-                                    class="fas fa-ellipsis-v font-20 text-muted"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel4">
-                                <a class="dropdown-item" href="#">Create Project</a>
-                                <a class="dropdown-item" href="#">Open Project</a>
-                                <a class="dropdown-item" href="#">Tasks Details</a>
-                            </div>
-                        </div>
-                        <h5 class="header-title mb-4 mt-0">Activity</h5>
+                        <h5 class="header-title mb-4 mt-0">Record</h5>
                         <div>
                             <canvas id="dash-doughnut" height="200"></canvas>
                         </div>
                         <ul class="list-unstyled list-inline text-center mb-0 mt-3">
                             <li class="mb-2 list-inline-item text-muted font-13">
-                                <i class="mdi mdi-label text-success mr-2"></i>Active
+                                <i class="mdi mdi-label text-success mr-2"></i>Kontak
                             </li>
                             <li class="mb-2 list-inline-item text-muted font-13">
-                                <i class="mdi mdi-label text-danger mr-2"></i>Complete
+                                <i class="mdi mdi-label text-danger mr-2"></i>Surat Masuk
                             </li>
                             <li class="mb-2 list-inline-item text-muted font-13">
-                                <i class="mdi mdi-label text-warning mr-2"></i>Panding
+                                <i class="mdi mdi-label text-warning mr-2"></i>Surat Keluar
                             </li>
                         </ul>
                     </div>
@@ -185,4 +174,9 @@
 </div>
 <!-- end wrapper -->
 <!-- Footer -->
+<script>
+    var semuaData = {!! json_encode($semuaData) !!};
+    var dataSuratMasuk = {!! json_encode($dataSuratMasuk) !!};
+    var dataSuratKeluar = {!! json_encode($dataSuratKeluar) !!};
+</script>
 @include('admin.layout.footer')

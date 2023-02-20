@@ -34,7 +34,7 @@
                                 <a href="#">Admin</a>
                             </li>
                             <li class="breadcrumb-item active">
-                                Validasi Surat
+                                Surat Keluar
                             </li>
                         </ol>
                     </div>
@@ -48,9 +48,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">
-                            Validasi Surat
+                            Surat Keluar
                         </h4>
-                        <p>Daftar surat yang ingin divalidasi dan dikirimkan ke request surat</p>
+                        <p>Daftar surat yang telah dikirim</p>
                         <br>
                         <br>
                         <table
@@ -85,19 +85,12 @@
                                     <td>
                                         <button type="button" class="btn btn-success btn-sm"
                                         data-toggle="modal"
-                                        data-target="#validasiSurat{{$s->id}}">
-                                            <i class="mdi mdi-cloud-download mr-2"></i>Validasi
-                                        </button>
-                                        <button type="button" class="btn btn-warning btn-sm"
-                                        data-animation="zoomIn"
-                                        data-toggle="modal"
-                                        data-target="#destroyRequest{{$s->id}}">
-                                            <i class="mdi mdi-alert-outline mr-2"></i>Hapus
+                                        data-target="#revisiSurat{{$s->id}}">
+                                            <i class="mdi mdi-cloud-download mr-2"></i>Revisi
                                         </button>
                                     </td>
                                 </tr>
-                                @include('admin.validasi_surat.modal.validasi')
-                                @include('admin.validasi_surat.modal.destroy')
+                                @include('admin.surat_keluar.modal.revisi')
                                 @endforeach
                             </tbody>
                         </table>

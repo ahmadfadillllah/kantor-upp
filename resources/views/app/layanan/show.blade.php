@@ -1,5 +1,5 @@
-@include('admin.layout.head')
-@include('admin.layout.header')
+@include('app.layout.head')
+@include('app.layout.header')
 <!-- End Navigation Bar-->
 <div class="wrapper">
     <div class="container-fluid">
@@ -34,7 +34,7 @@
                                 <a href="#">Admin</a>
                             </li>
                             <li class="breadcrumb-item active">
-                                Validasi Surat
+                                Daftar Surat
                             </li>
                         </ol>
                     </div>
@@ -48,9 +48,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">
-                            Validasi Surat
+                            Daftar Surat
                         </h4>
-                        <p>Daftar surat yang ingin divalidasi dan dikirimkan ke request surat</p>
                         <br>
                         <br>
                         <table
@@ -65,11 +64,10 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Email</th>
-                                    <th>No. WhatsApp</th>
                                     <th>Kategori Surat</th>
                                     <th>Nama</th>
                                     <th>Nama Panggilan Kapal</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -77,23 +75,12 @@
                                 @foreach ($surat as $s)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $s->email }}</td>
-                                    <td>{{ $s->no_hp }}</td>
                                     <td>{{ $s->daftar_surat->nama_surat }}</td>
                                     <td>{{ $s->nama }}</td>
                                     <td>{{ $s->nama_panggilan_kapal }}</td>
+                                    <td>{{ $s->keterangan }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-success btn-sm"
-                                        data-toggle="modal"
-                                        data-target="#validasiSurat{{$s->id}}">
-                                            <i class="mdi mdi-cloud-download mr-2"></i>Validasi
-                                        </button>
-                                        <button type="button" class="btn btn-warning btn-sm"
-                                        data-animation="zoomIn"
-                                        data-toggle="modal"
-                                        data-target="#destroyRequest{{$s->id}}">
-                                            <i class="mdi mdi-alert-outline mr-2"></i>Hapus
-                                        </button>
+                                        <a href="{{ asset('admin/mannatthemes.com/zoogler/horizontal/assets/images/users') }}/{{$s->surat}}" target="_blank" rel="noopener noreferrer" class="btn btn-info btn-sm"><i class="mdi mdi-cloud-download mr-2"></i>Download</a>
                                     </td>
                                 </tr>
                                 @include('admin.validasi_surat.modal.validasi')
@@ -111,4 +98,4 @@
 </div>
 <!-- end wrapper -->
 <!-- Footer -->
-@include('admin.layout.footer')
+@include('app.layout.footer')

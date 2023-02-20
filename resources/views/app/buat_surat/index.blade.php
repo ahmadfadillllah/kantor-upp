@@ -3,6 +3,7 @@
 <!-- End Navigation Bar-->
 <div class="wrapper">
     <div class="container-fluid">
+        @include('admin.notif.index')
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
@@ -49,124 +50,121 @@
             </div>
         </div>
         <!-- end page title end breadcrumb -->
-        <div class="row">
-            <div class="col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="mt-0 header-title">
-                            Form Surat
-                        </h4>
-                        <p class="text-muted mb-4 font-13">
-                            Silahkan mengisi semua form dibawah ini:
-                        </p>
-                        <div class="form-group row">
-                            <label
-                                for="example-text-input-lg"
-                                class="col-sm-12 col-form-label"
-                                >Email</label
-                            >
-                            <div class="col-sm-12">
-                                <input
-                                    class="form-control form-control-lg"
-                                    type="email"
-                                    placeholder="Masukkan Email"
-                                    id="example-text-input-lg"
-                                    name="email"
-                                    required
-                                />
+        <form action="{{ route('app.buat_surat_post') }}" method="post">
+            @csrf
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">
+                                Form Surat
+                            </h4>
+                            <p class="text-muted mb-4 font-13">
+                                Silahkan mengisi semua form dibawah ini:
+                            </p>
+                            <div class="form-group row">
+                                <label
+                                    for="example-text-input-lg"
+                                    class="col-sm-12 col-form-label"
+                                    >Email</label
+                                >
+                                <div class="col-sm-12">
+                                    <input
+                                        class="form-control form-control-lg"
+                                        type="email"
+                                        placeholder="Masukkan Email"
+                                        id="example-text-input-lg"
+                                        name="email"
+                                        required
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label
-                                for="example-text-input-lg"
-                                class="col-sm-12 col-form-label"
-                                >No. Handphone</label
-                            >
-                            <div class="col-sm-12">
-                                <input
-                                    class="form-control form-control-lg"
-                                    type="text"
-                                    placeholder="Masukkan No. Handphone"
-                                    id="example-text-input-lg"
-                                    name="no_hp"
-                                    required
-                                />
+                            <div class="form-group row">
+                                <label
+                                    for="example-text-input-lg"
+                                    class="col-sm-12 col-form-label"
+                                    >No. WhatsApp</label
+                                >
+                                <div class="col-sm-12">
+                                    <input
+                                        class="form-control form-control-lg"
+                                        type="text"
+                                        placeholder="Masukkan No. WhatsApp"
+                                        id="example-text-input-lg"
+                                        name="no_hp"
+                                        required
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label
-                                class="col-sm-12 col-form-label"
-                                >Kategori Surat</label
-                            >
-                            <div class="col-sm-12">
-                                <select class="custom-select" name="daftarsurat_id" required>
-                                    <option selected="selected" value="">
-                                        Pilih salah satu
-                                    </option>
-                                    @foreach ($surat as $s)
-                                    <option value="{{ $s->id }}">{{ $s->nama_surat }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="form-group row">
+                                <label
+                                    class="col-sm-12 col-form-label"
+                                    >Kategori Surat</label
+                                >
+                                <div class="col-sm-12">
+                                    <select class="custom-select" name="daftarsurat_id" required>
+                                        <option selected="selected" value="">
+                                            Pilih salah satu
+                                        </option>
+                                        @foreach ($surat as $s)
+                                        <option value="{{ $s->id }}">{{ $s->nama_surat }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-group row">
-                            <label
-                                for="example-text-input-lg"
-                                class="col-sm-12 col-form-label"
-                                >Nama Kapal</label
-                            >
-                            <div class="col-sm-12">
-                                <input
-                                    class="form-control form-control-lg"
-                                    type="text"
-                                    placeholder="Masukkan Nama Kapal"
-                                    id="example-text-input-lg"
-                                    name="nama_kapal"
-                                    required
-                                />
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label
+                                    for="example-text-input-lg"
+                                    class="col-sm-12 col-form-label"
+                                    >Nama</label
+                                >
+                                <div class="col-sm-12">
+                                    <input
+                                        class="form-control form-control-lg"
+                                        type="text"
+                                        placeholder="Masukkan Nama"
+                                        id="example-text-input-lg"
+                                        name="nama"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label
+                                    for="example-text-input-lg"
+                                    class="col-sm-12 col-form-label"
+                                    >Nama Panggilan Kapal</label
+                                >
+                                <div class="col-sm-12">
+                                    <input
+                                        class="form-control form-control-lg"
+                                        type="text"
+                                        placeholder="Masukkan Nama Panggilan Kapal"
+                                        id="example-text-input-lg"
+                                        name="nama_panggilan_kapal"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light"> <i class="mdi mdi-send mr-2"></i>Submit</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label
-                                for="example-text-input-lg"
-                                class="col-sm-12 col-form-label"
-                                >Tempat Pendaftaran</label
-                            >
-                            <div class="col-sm-12">
-                                <input
-                                    class="form-control form-control-lg"
-                                    type="text"
-                                    placeholder="Masukkan Tempat Pendaftaran"
-                                    id="example-text-input-lg"
-                                    name="tempat_pendaftaran"
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label
-                                for="example-text-input-lg"
-                                class="col-sm-12 col-form-label"
-                                >Form Editor</label
-                            >
-                            <div class="col-sm-12">
-                                <textarea id="elm1" name="form_editor"></textarea>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <!--end row-->
     </div>
     <!-- end container -->

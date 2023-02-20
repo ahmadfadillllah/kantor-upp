@@ -41,11 +41,8 @@
             <nav class="navbar navbar-expand-lg center-nav transparent position-absolute navbar-dark">
                 <div class="container flex-lg-row flex-nowrap align-items-center">
                     <div class="navbar-brand w-100">
-                        <a href="./index.html">
-                            <img class="logo-dark" src="{{ asset('home/dist') }}/assets/img/logo.png"
-                                srcset="{{ asset('home/dist') }}/assets/img/logo@2x.png 2x" alt="" />
-                            <img class="logo-light" src="{{ asset('home/dist') }}/assets/img/logo-light.png"
-                                srcset="{{ asset('home/dist') }}/assets/img/logo-light@2x.png 2x" alt="" />
+                        <a href="{{ route('home.index') }}">
+                            <h3 class="text-white fs-30 mb-0">{{ config('app.name') }}</h3>
                         </a>
                     </div>
                     <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">

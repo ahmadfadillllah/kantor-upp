@@ -48,3 +48,35 @@
         <strong>Notif!</strong> {{ $message }}
     </div>
 @enderror
+@error('nama')
+    <div class="alert bg-gradient1 text-white alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Notif!</strong> {{ $message }}
+    </div>
+@enderror
+@error('nama_panggilan_surat')
+    <div class="alert bg-gradient1 text-white alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Notif!</strong> {{ $message }}
+    </div>
+@enderror
+@error('daftarsurat_id')
+    <div class="alert bg-gradient1 text-white alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Notif!</strong> {{ $message }}
+    </div>
+@enderror
+@error('no_hp')
+    <div class="alert bg-gradient1 text-white alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Notif!</strong> {{ $message }}
+    </div>
+@enderror

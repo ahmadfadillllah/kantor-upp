@@ -34,7 +34,7 @@
                                 <a href="#">Admin</a>
                             </li>
                             <li class="breadcrumb-item active">
-                                Validasi Surat
+                                Kontak
                             </li>
                         </ol>
                     </div>
@@ -48,9 +48,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">
-                            Validasi Surat
+                            Daftar Kontak
                         </h4>
-                        <p>Daftar surat yang ingin divalidasi dan dikirimkan ke request surat</p>
                         <br>
                         <br>
                         <table
@@ -67,37 +66,29 @@
                                     <th>No</th>
                                     <th>Email</th>
                                     <th>No. WhatsApp</th>
-                                    <th>Kategori Surat</th>
-                                    <th>Nama</th>
-                                    <th>Nama Panggilan Kapal</th>
+                                    <th>Subject</th>
+                                    <th>Pesan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($surat as $s)
+                                @foreach ($kontak as $k)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $s->email }}</td>
-                                    <td>{{ $s->no_hp }}</td>
-                                    <td>{{ $s->daftar_surat->nama_surat }}</td>
-                                    <td>{{ $s->nama }}</td>
-                                    <td>{{ $s->nama_panggilan_kapal }}</td>
+                                    <td>{{ $k->email }}</td>
+                                    <td>{{ $k->no_hp }}</td>
+                                    <td>{{ $k->subject }}</td>
+                                    <td>{{ $k->pesan }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-success btn-sm"
-                                        data-toggle="modal"
-                                        data-target="#validasiSurat{{$s->id}}">
-                                            <i class="mdi mdi-cloud-download mr-2"></i>Validasi
-                                        </button>
                                         <button type="button" class="btn btn-warning btn-sm"
                                         data-animation="zoomIn"
                                         data-toggle="modal"
-                                        data-target="#destroyRequest{{$s->id}}">
+                                        data-target="#destroyPesan{{$k->id}}">
                                             <i class="mdi mdi-alert-outline mr-2"></i>Hapus
                                         </button>
                                     </td>
                                 </tr>
-                                @include('admin.validasi_surat.modal.validasi')
-                                @include('admin.validasi_surat.modal.destroy')
+                                @include('admin.kontak.modal.destroy')
                                 @endforeach
                             </tbody>
                         </table>

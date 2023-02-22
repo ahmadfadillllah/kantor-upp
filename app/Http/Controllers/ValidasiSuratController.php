@@ -22,11 +22,6 @@ class ValidasiSuratController extends Controller
             $surat = RequestSurat::find($id);
             $user = RequestSurat::where('id', $id)->first();
 
-            (new MailMessage)
-                ->greeting('Halo '. $user->nama .'!')
-                ->line('Request surat telah dipublish!')
-                ->line('Silahkan mendownload di halaman web!');
-
                 $accesskey= '8b77591fe1ae830044d4cd1f96923d84';
                 $phone = $user->no_hp; //atau bisa menggunakan 62812xxxxxxx
                 $message = 'Halo '. $user->nama .'!.. Request surat telah dipublish, Silahkan mendownload di halaman web!';

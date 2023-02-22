@@ -31,11 +31,6 @@ class SuratKeluarController extends Controller
         $surat->save();
 
         try {
-            (new MailMessage)
-                ->greeting('Halo '. $user->nama .'!')
-                ->line('Request surat telah direvisi!')
-                ->line('Silahkan mendownload ulang di halaman web!');
-
                 $accesskey= '8b77591fe1ae830044d4cd1f96923d84';
                 $phone = $request->no_hp; //atau bisa menggunakan 62812xxxxxxx
                 $message = 'Halo '. $user->nama .'!.. Request surat telah direvisi, Silahkan mendownload ulang di halaman web!';

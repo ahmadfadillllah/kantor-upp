@@ -49,14 +49,14 @@ class AppController extends Controller
                 'status' => 'Proses',
             ]);
 
-            (new MailMessage)
-                ->greeting('Halo '. $request->nama .'!')
-                ->line('Request surat telah kami terima!')
-                ->line('Mohon pantai email atau no. Whatsapp anda jika surat telah selesai!');
+            // (new MailMessage)
+            //     ->greeting('Halo '. $request->nama .'!')
+            //     ->line('Request surat telah kami terima!')
+            //     ->line('Mohon pantai email atau no. Whatsapp anda jika surat telah selesai!');
 
                 $accesskey= '8b77591fe1ae830044d4cd1f96923d84';
                 $phone = $request->no_hp; //atau bisa menggunakan 62812xxxxxxx
-                $message = 'Halo '. $request->nama .'!.. Request surat telah kami terima, Mohon pantai email atau no. Whatsapp anda jika surat telah selesai!';
+                $message = 'Halo '. $request->nama .'!.. Request surat telah kami terima, Mohon pantau no. Whatsapp anda. Jika surat telah selesai, kami akan menghubungi anda kembali,, Terimakasih!';
 
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
@@ -75,7 +75,7 @@ class AppController extends Controller
 
                 $token = "cakLiM7crm7EQTAzPf9UKbn8f5APTkk7Ro429f3egCkUvDjPwS";
                 $phone= $request->no_hp;; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
-                $message = 'Halo '. $request->nama .'!.. Request surat telah kami terima, Mohon pantai email atau no. Whatsapp anda jika surat telah selesai!';
+                $message = 'Halo '. $request->nama .'!.. Request surat telah kami terima, Mohon pantau no. Whatsapp anda. Jika surat telah selesai, kami akan menghubungi anda kembali,, Terimakasih!';
 
                 $curl = curl_init();
                 curl_setopt_array($curl, array(

@@ -125,13 +125,13 @@
                                 <label
                                     for="example-text-input-lg"
                                     class="col-sm-12 col-form-label"
-                                    >Nama</label
+                                    >Nama Pemilik Kapal</label
                                 >
                                 <div class="col-sm-12">
                                     <input
                                         class="form-control form-control-lg"
                                         type="text"
-                                        placeholder="Masukkan Nama"
+                                        placeholder="Masukkan Nama Pemilik Kapal"
                                         id="example-text-input-lg"
                                         name="nama"
                                         required

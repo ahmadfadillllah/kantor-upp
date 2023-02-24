@@ -68,7 +68,7 @@
                                     <th>Email</th>
                                     <th>No. WhatsApp</th>
                                     <th>Kategori Surat</th>
-                                    <th>Nama</th>
+                                    <th>Nama Pemilik Kapal</th>
                                     <th>Nama Panggilan Kapal</th>
                                     <th>Aksi</th>
                                 </tr>

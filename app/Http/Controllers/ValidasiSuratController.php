@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\RequestSurat;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Messages\MailMessage;
+use App\Mail\sendEmail;
+use Illuminate\Support\Facades\Mail;
 
 
 class ValidasiSuratController extends Controller
@@ -21,6 +22,13 @@ class ValidasiSuratController extends Controller
             $date = date('YmdHisgis');
             $surat = RequestSurat::find($id);
             $user = RequestSurat::where('id', $id)->first();
+
+            $details = [
+                'title' => 'Pesan dari Kantor UPP',
+                'body' => 'Halo '. $user->nama .'!.. Request surat telah dipublish, Silahkan mendownload di halaman web!'
+                ];
+
+                Mail::to($user->email)->send(new sendEmail($details));
 
                 $accesskey= '8b77591fe1ae830044d4cd1f96923d84';
                 $phone = $user->no_hp; //atau bisa menggunakan 62812xxxxxxx
@@ -70,7 +78,7 @@ class ValidasiSuratController extends Controller
 
             return redirect()->back()->with('success', 'Berhasil mengirim ke request');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('success', $th->getMessage());
+            return redirect()->back()->with('info', $th->getMessage());
         }
     }
 

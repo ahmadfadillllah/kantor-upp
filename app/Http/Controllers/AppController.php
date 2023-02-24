@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\DaftarSurat;
 use App\Models\RequestSurat;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Messages\MailMessage;
+use App\Mail\sendEmail;
+use Illuminate\Support\Facades\Mail;
 
 class AppController extends Controller
 {
@@ -49,10 +50,12 @@ class AppController extends Controller
                 'status' => 'Proses',
             ]);
 
-            // (new MailMessage)
-            //     ->greeting('Halo '. $request->nama .'!')
-            //     ->line('Request surat telah kami terima!')
-            //     ->line('Mohon pantai email atau no. Whatsapp anda jika surat telah selesai!');
+            $details = [
+                'title' => 'Pesan dari Kantor UPP',
+                'body' => 'Halo '. $request->nama .'!.. Request surat telah kami terima, Mohon pantau no. Whatsapp anda. Jika surat telah selesai, kami akan menghubungi anda kembali,, Terimakasih!'
+                ];
+
+                Mail::to($request->email)->send(new sendEmail($details));
 
                 $accesskey= '8b77591fe1ae830044d4cd1f96923d84';
                 $phone = $request->no_hp; //atau bisa menggunakan 62812xxxxxxx
@@ -95,7 +98,7 @@ class AppController extends Controller
 
             return redirect()->back()->with('success', 'Berhasil mengirim request, silahkan melihat email/No.Whatsapp anda untuk mengetahui jika PAS telah selesai');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('success', $th->getMessage());
+            return redirect()->back()->with('info', $th->getMessage());
         }
     }
 }

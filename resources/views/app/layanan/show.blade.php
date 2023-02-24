@@ -65,7 +65,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Kategori Surat</th>
-                                    <th>Nama</th>
+                                    <th>Nama Pemilik Kapal</th>
                                     <th>Nama Panggilan Kapal</th>
                                     <th>Keterangan</th>
                                     <th>Aksi</th>

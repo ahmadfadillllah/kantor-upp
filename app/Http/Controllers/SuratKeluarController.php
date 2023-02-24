@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\RequestSurat;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Messages\MailMessage;
+use App\Mail\sendEmail;
+use Illuminate\Support\Facades\Mail;
 
 class SuratKeluarController extends Controller
 {
@@ -31,6 +32,13 @@ class SuratKeluarController extends Controller
         $surat->save();
 
         try {
+            $details = [
+                'title' => 'Pesan dari Kantor UPP',
+                'body' => 'Halo '. $user->nama .'!.. Request surat telah direvisi, Silahkan mendownload ulang di halaman web!'
+                ];
+
+                Mail::to($user->email)->send(new sendEmail($details));
+
                 $accesskey= '8b77591fe1ae830044d4cd1f96923d84';
                 $phone = $request->no_hp; //atau bisa menggunakan 62812xxxxxxx
                 $message = 'Halo '. $user->nama .'!.. Request surat telah direvisi, Silahkan mendownload ulang di halaman web!';
@@ -71,7 +79,7 @@ class SuratKeluarController extends Controller
 
             return redirect()->back()->with('success', 'Berhasil merevisi surat');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('success', $th->getMessage());
+            return redirect()->back()->with('info', $th->getMessage());
         }
     }
 
